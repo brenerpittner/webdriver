@@ -3,7 +3,6 @@ package testsFront;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +15,10 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class PageHome {
 	private WebDriver driver;
-	
 	private List<WebElement> txtArticle = new ArrayList<WebElement>();
 	private List<String> cursos = new ArrayList<String>();
 	
 	@SuppressWarnings("deprecation")
-
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", System.getenv("Driver"));
@@ -42,13 +39,12 @@ public class PageHome {
 		currentUrl();
 
 		driver.findElement(By.id("dropdown-cursos")).click();
-		String categoria = "Tecnologia da Informação e Informática";
-		//String categoria = "Pesquisar Todos"; //se usar isso, comentar linha 45 e 48
+		//String categoria = "Tecnologia da Informação e Informática";
+		String categoria = "Pesquisar Todos"; //se usar isso, comentar linha 45 e 48
 		driver.findElement(By.linkText(categoria)).click();	
-		driver.findElement(By.linkText("Cursos Livres")).click();
+		//driver.findElement(By.linkText("Cursos Livres")).click();
 		currentUrl();
 		
-
 		while(findElements("card-title") == true) {
 			findElements("card-title");
 			setElement();			
@@ -62,8 +58,8 @@ public class PageHome {
 		System.out.println(cursos);
 		System.out.println("Categoria: " + categoria);
 		System.out.println("Quantidade de cursos: " + cursos.size());
-		
 	}
+	
 	private String currentUrl() {
 		String current_url = driver.getCurrentUrl();
 		System.out.println(current_url);
@@ -105,10 +101,8 @@ public class PageHome {
 		}
 	}	
 	
-	
 	@After
 	public void fechar() {	
 		driver.close();
 	}
-	
 }
